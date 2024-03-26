@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       {% block content %}
+
+            <div class="col-8 m-alto pt-2 pb-2 text-center">
+                <h1>Carros</h1>
+            </div>
+            <div class="col-8 m-alto pt-2 pb-2 text-center">
+                <a href="/form/" class="btn btn-success">Adcionar</a>
+            </div>
+            <div class="col-8 m-alto pt-2 pb-2 text-center">
+                <form method="get">
+                    <input type="text" id="search" name="search" class="form-control" placeholder="">
+                </form>
+            </div>
+            <div class="col-8 m-alto pt-2 pb-2 text-center"></div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Carro</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dbs in db %}
+                        <tr>
+                            <th>{{dbs.id}}</th>
+                            <td>{{dbs.carro}}</td>
+                            <td>{{dbs.marca}}</td>
+                            <td>{{dbs.ano}}</td>
+                            <td>
+                            <a href="/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
+                            <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
+                            <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+       {% endblock  %}
+        
+        <script src="" async defer></script>
+    </body>
+</html>
